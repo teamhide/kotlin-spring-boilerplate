@@ -11,19 +11,32 @@ locly is a location sharing service similar to Zenly
 - MySQL & MongoDB
 - Kafka
 
+## Test
+
+### Test all
+
+`./gradlew testAll`
+
+### Unit test
+
+`./gradlew testUnit`
+
+### E2E test
+
+`./gradlew teste2e`
+
 ## Functional requirements
 
 ### User
 - [x] 회원가입한다
-- [ ] 프로필을 수정한다
+- [x] 내 상태를 업데이트한다
+  - [x] 온라인/오프라인/유령 모드 중 한가지로 업데이트한다
 - [x] 다른 유저를 친구로 추가한다
   - [ ] 유저 당 최대 친구 수는 20명이다
 
 ### Location
 - [x] 내 위치를 업데이트한다
   - [x] 위치 기록을 별도로 저장한다
-- [ ] 내 상태를 업데이트한다
-  - [ ] 온라인/오프라인/유령 모드 중 한가지로 업데이트한다
 - [x] 특정 친구의 위치를 조회한다
   - [x] 친구의 위치만 조회할 수 있다
   - [x] 유령 모드인 경우 조회할 수 없다

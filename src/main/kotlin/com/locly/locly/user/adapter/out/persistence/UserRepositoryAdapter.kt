@@ -7,6 +7,7 @@ import com.locly.locly.user.application.port.out.UpdateUserPersistencePort
 import com.locly.locly.user.domain.converter.UserConverter
 import com.locly.locly.user.domain.model.User
 import com.locly.locly.user.domain.vo.Location
+import com.locly.locly.user.domain.vo.UserStatus
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
 
@@ -50,5 +51,9 @@ class UserRepositoryAdapter(
 
     override fun updateLocationById(userId: Long, location: Location): Long {
         return userRepository.updateLocationById(userId = userId, lat = location.lat, lng = location.lng)
+    }
+
+    override fun updateStatusById(userId: Long, status: UserStatus): Long {
+        return userRepository.updateStatusById(userId = userId, status = status)
     }
 }

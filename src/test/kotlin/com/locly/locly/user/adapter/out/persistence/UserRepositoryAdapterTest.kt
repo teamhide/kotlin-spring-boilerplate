@@ -2,6 +2,7 @@ package com.locly.locly.user.adapter.out.persistence
 
 import com.locly.locly.user.adapter.out.persistence.jpa.UserRepository
 import com.locly.locly.user.domain.vo.Location
+import com.locly.locly.user.domain.vo.UserStatus
 import com.locly.locly.user.makeUser
 import com.locly.locly.user.makeUserEntity
 import io.kotest.core.spec.style.StringSpec
@@ -116,5 +117,18 @@ class UserRepositoryAdapterTest : StringSpec({
         sut.location.lng shouldBe userEntity.location.y
         sut.stayedAt shouldBe userEntity.stayedAt
         verify(exactly = 1) { userRepository.findByIdOrNull(any()) }
+    }
+
+    "id로 status를 업데이트한다" {
+        // Given
+        val userId = 1L
+        every { userRepository.updateStatusById(any(), any()) } returns 1L
+
+        // When
+        val count = repositoryAdapter.updateStatusById(userId = userId, status = UserStatus.GHOST)
+
+        // Then
+        count shouldBe 1
+        verify(exactly = 1) { userRepository.updateStatusById(userId = userId, status = UserStatus.GHOST) }
     }
 })
