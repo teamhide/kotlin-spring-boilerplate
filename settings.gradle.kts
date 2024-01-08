@@ -1,1 +1,1 @@
-rootProject.name = "locly"
+rootProject.name = "sample"

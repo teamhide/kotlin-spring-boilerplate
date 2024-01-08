@@ -18,7 +18,7 @@ allOpen {
     annotation("jakarta.persistence.Embeddable")
 }
 
-group = "com.locly"
+group = "com.sample"
 version = "0.0.1"
 
 java {
