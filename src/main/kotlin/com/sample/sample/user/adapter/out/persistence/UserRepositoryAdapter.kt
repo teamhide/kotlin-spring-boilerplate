@@ -16,9 +16,7 @@ class UserRepositoryAdapter(
     private val userRepository: UserRepository,
 ) : GetUserPersistencePort, SaveUserPersistencePort, UpdateUserPersistencePort {
     override fun findByEmailOrNickname(email: String, nickname: String): User? {
-        val userEntity = userRepository.findByEmailOrNickname(email = email, nickname = nickname) ?: run {
-            return null
-        }
+        val userEntity = userRepository.findByEmailOrNickname(email = email, nickname = nickname) ?: return null
         return UserConverter.from(user = userEntity)
     }
 
@@ -37,9 +35,7 @@ class UserRepositoryAdapter(
     }
 
     override fun findById(id: Long): User? {
-        val userEntity = userRepository.findByIdOrNull(id = id) ?: run {
-            return null
-        }
+        val userEntity = userRepository.findByIdOrNull(id = id) ?: return null
         return UserConverter.from(user = userEntity)
     }
 

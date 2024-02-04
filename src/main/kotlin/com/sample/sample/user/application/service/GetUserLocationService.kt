@@ -14,9 +14,7 @@ class GetUserLocationService(
     private val getUserPersistencePort: GetUserPersistencePort,
 ) : GetUserLocationUseCase {
     override fun execute(query: GetUserLocationQuery): UserWithLocation {
-        val user = getUserPersistencePort.findById(id = query.userId) ?: run {
-            throw UserNotFoundException()
-        }
+        val user = getUserPersistencePort.findById(id = query.userId) ?: throw UserNotFoundException()
         return user.let {
             UserWithLocation(
                 userId = it.id,

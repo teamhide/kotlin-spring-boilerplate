@@ -14,8 +14,6 @@ class GetUserService(
     private val getUserPersistencePort: GetUserPersistencePort,
 ) : GetUserUseCase {
     override fun execute(query: GetUserQuery): User {
-        return getUserPersistencePort.findById(id = query.userId) ?: run {
-            throw UserNotFoundException()
-        }
+        return getUserPersistencePort.findById(id = query.userId) ?: throw UserNotFoundException()
     }
 }
